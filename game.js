@@ -24,6 +24,7 @@ document.addEventListener('keyup', function (argument) {
 
 	if (key === compGuess){
 			wins = ++wins;
+			guessesLeft = 10;
 			var showWins = document.getElementById('wins');
 			showWins.innerHTML = wins;
 			compGuess = randomLetter();
