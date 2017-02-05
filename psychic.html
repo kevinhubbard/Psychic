@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>psychic</title>
+</head>
+<body>
+<div id="gameBoard">
+	<h1>The Psychic Game</h1>
+	<p>Guess what letter I'm think of...</p>
+	<p>Press any letter on your keyboard to begin.</p>
+	<p>Wins: <span id="wins"></span></p>
+	<p id="losses" ></p>
+	<p>Guesses Left:<span id="guessesLeft" ></span></p>
+	<p>Your Guess: <span id="guessList"></span></p>
+
+	<script type="text/javascript">
+			
+	var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	var wins = 0;
+	var losses = 0;
+	var guessesLeft = 10;
+	var guessList = '';
+
+	
+	var compGuess = alphabet[Math.floor(Math.random()*alphabet.length)];
+		
+	
+	console.log(compGuess);
+	console.log(guessesLeft);
+
+
+
+
+	document.addEventListener('keydown', function (argument) {
+	var key = argument.key;
+	var test = document.getElementById('guessList');
+	test.innerHTML = key;
+
+
+	
+		if (key === compGuess){
+			wins = ++wins;
+			var showWins = document.getElementById('wins');
+			showWins.innerHTML = wins;
+			compGuess = alphabet[Math.floor(Math.random()*alphabet.length)];
+
+		}else{
+			guessesLeft--;
+			var gl = document.getElementById('guessesLeft');
+			gl.innerHTML = guessesLeft;
+		} 
+	
+		if (guessesLeft === 0){
+			var lose = document.getElementById('losses');
+			lose.innerHTML = ('You lost the letter was: ' + compGuess);
+		}
+})
+
+
+
+
+
+/*for (guessesLeft = 10; guessesLeft>0; guessesLeft--){
+	document.onkeyup = function (argument) {
+		var key = argument.key;
+
+			if (key === compGuess){
+				console.log(key + ' was a correct guess');
+				var el = document.getElementById('wins');
+				el.textContent = ++wins; 
+			}else {
+				console.log(key + ' was not a correct guess. Try again');}
+		}
+}*/
+
+	
+	</script>
+</div>
+</body>
+</html>
